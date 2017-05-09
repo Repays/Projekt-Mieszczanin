@@ -1,0 +1,19 @@
+<h3 lang="pl">Tabela wyników</h3>
+<br/>
+Wierszy do wyświetlenia: <input type="number" step="1" min="0" max="6" ng-model="vm.rowNumber">
+<!-- Gdy ustawiam wartość max przez zmienną vm.maxRow, to i tak mogę przekroczyć zakres -->
+<br/>
+<br/>
+<table>
+    <tr>
+        <th ng-repeat="name in vm.template" ng-click="vm.sort(name.id)">
+            {{name.nazwa}}
+        </th>
+    </tr>
+    <tr ng-repeat="item in vm.data | orderBy: vm.order | limitTo: vm.rowNumber">
+        <td ng-repeat="name in vm.template">
+            {{item[name.id]}}
+        </td>
+    </tr>
+</table>
+<br/>
